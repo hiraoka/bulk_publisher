@@ -4,7 +4,7 @@ amqpに任意の数のメッセージをpublishするツール。
 
 ##Setting
 
-`環境変数`
+`設定が必要な環境変数`
 ```
 'PHX_AMQP_HOST'
 'PHX_AMQP_PORT'
