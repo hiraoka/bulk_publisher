@@ -3,7 +3,9 @@
 amqpに任意の数のメッセージをpublishするツール。
 
 ##Setting
-```環境変数
+
+`環境変数`
+```
 'PHX_AMQP_HOST'
 'PHX_AMQP_PORT'
 'PHX_AMQP_VHOST'
@@ -14,15 +16,16 @@ amqpに任意の数のメッセージをpublishするツール。
 ```
 
 ## How to Use
-```commands
-  ruby bin/bulk_publisher.rb start
-```
- 
-```require_param
--m integer message count that number of per thread.
+`commands`
+```  ruby bin/bulk_publisher.rb start
 ```
 
-```options
+`require_param`
+```-m integer message count that number of per thread.
+```
+
+`options`
+```
 -t integer thread count.
 -f string  pid file path.
 ```
