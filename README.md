@@ -23,11 +23,11 @@ ruby bin/bulk_publisher.rb start
 
 `require_param`
 ```
--m integer message count that number of per thread.
+-m (integer) #message count that number of per thread.
 ```
 
 `options`
 ```
--t integer thread count.
--f string  pid file path.
+-t (integer) #thread count.
+-f (string)  #pid file path.
 ```
