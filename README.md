@@ -17,11 +17,13 @@ amqpに任意の数のメッセージをpublishするツール。
 
 ## How to Use
 `commands`
-```  ruby bin/bulk_publisher.rb start
+```  
+ruby bin/bulk_publisher.rb start
 ```
 
 `require_param`
-```-m integer message count that number of per thread.
+```
+-m integer message count that number of per thread.
 ```
 
 `options`
