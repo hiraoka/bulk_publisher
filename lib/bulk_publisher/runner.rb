@@ -29,6 +29,13 @@ class BulkPublisher::Runner < Thor
     BulkPublisher::OPTIOM_KEYS.each { |key|
       set_param!( hash: @params, key: key )
     }
+
+    #環境変数から取得する際にtrue/falseが文字列になるので変換
+    case @params["ssl"]
+    when "true"; @params["ssl"] = true
+    when "false"; @params["ssl"] = false
+    end
+
     if options
       @params["thread_count"]  = options["thread_count"]
       @params["message_count"] = options["message_count"]
@@ -37,15 +44,18 @@ class BulkPublisher::Runner < Thor
   end
 
   def config_options
-    @config_options ||= ::YAML.load_file('./config/app_settings.yml')
-    @config_options["settings"]
+    unless @config_options
+      config_options ||= ::YAML.load_file('./config/app_settings.yml')
+      @config_options = config_options["settings"]
+    end
+    @config_options
+  rescue
+    @config_options = {}
   end
 
   def set_param!( hash:, key: )
     env_key = BulkPublisher::ENVIRONMENT[key]
-    hash[key] = options[key] ||
-      config_options[key] ||
-      ( ENV[env_key] if env_key )
+    hash[key] = ENV[env_key] if env_key
     hash
   end
 end
