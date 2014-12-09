@@ -16,6 +16,12 @@ amqpに任意の数のメッセージをpublishするツール。
 ```
 
 ## How to Use
+`最初に`
+```
+bundle installed
+```
+
+
 `commands`
 ```  
 ruby bin/bulk_publisher.rb start
@@ -31,3 +37,6 @@ ruby bin/bulk_publisher.rb start
 -t (integer) #thread count. (default 5)
 -f (string)  #pid file path.
 ```
+
+##MEMO
+スレッド数(-t) * メッセージ数(-m) = publishする数
