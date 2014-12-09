@@ -7,16 +7,18 @@ class BulkPublisher::Thread
     @threads = []
     @thread_count.times do |i|
       @threads << Thread.new do
-        yield
+        begin
+          Thread.pass
+          yield
+        rescue => e
+          puts "ERROR: raise exception. #{e.inspect}"
+        end
       end
     end
     run_clazz.run if run_clazz
     @threads.each { |t|
       t.join
     }
-  rescue => e
-    puts "raise unknown exception. #{e}"
-    puts e.backtrace
   end
 
   def stop( stop_clazz: nil )
