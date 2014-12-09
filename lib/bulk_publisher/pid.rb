@@ -1,6 +1,6 @@
 class BulkPublisher::Pid
   class << self
-    attr_accessor: :file
+    attr_accessor :file
     def create
       pid = Process.pid
       File.write(file, "#{pid}")
