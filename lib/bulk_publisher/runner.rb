@@ -43,16 +43,6 @@ class BulkPublisher::Runner < Thor
     @params
   end
 
-  def config_options
-    unless @config_options
-      config_options ||= ::YAML.load_file('./config/app_settings.yml')
-      @config_options = config_options["settings"]
-    end
-    @config_options
-  rescue
-    @config_options = {}
-  end
-
   def set_param!( hash:, key: )
     env_key = BulkPublisher::ENVIRONMENT[key]
     hash[key] = ENV[env_key] if env_key
