@@ -54,7 +54,7 @@ class BulkPublisher::Publisher
       if stop?
         break
       end
-      q.publish({"body"=>{"greeting"=>"yo"}, "routing_key"=>"bulk_publisher_test"}.to_json )
+      q.publish({"body"=>"bulk_publisher_test"}.to_json )
     end
     conn.stop
     @running_time = Time.now - begin_at
