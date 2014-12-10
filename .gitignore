@@ -1,2 +1,4 @@
 /.bundle
 config/*.yml
+pid/*
+Gemfile.lock
