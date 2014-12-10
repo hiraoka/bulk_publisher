@@ -6,7 +6,6 @@ class BulkPublisher::Pid
       File.write(file, "#{pid}")
     rescue
       file = nil
-      puts "could not create pid file."
     end
 
     def delete
