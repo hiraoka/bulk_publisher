@@ -9,7 +9,7 @@ class BulkPublisher::Runner < Thor
   option :daemonize,      type: :boolean, aliases: '-d', desc: "Running as a daemon"
   option :message_count,  required: true, type: :numeric, aliases: '-m', desc: "message count that number of per thread"
   option :thread_count,   default: 5, type: :numeric, aliases: '-t', desc: "thread count"
-  option :pid_file,       type: :string, aliases: '-f', desc: "pid file name."
+  option :pid_file,       type: :string, aliases: '-P', desc: "pid file name."
   def start
     puts "Starting bulk_publisher process."
 
