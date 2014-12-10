@@ -6,13 +6,13 @@ amqpに任意の数のメッセージをpublishするツール。
 
 `設定が必要な環境変数`
 ```
-'PHX_AMQP_HOST'
-'PHX_AMQP_PORT'
-'PHX_AMQP_VHOST'
-'PHX_AMQP_USER'
-'PHX_AMQP_PASS'
-'PHX_AMQP_SSL'
-'PHX_ROUTING_KEY'
+'BP_AMQP_HOST'
+'BP_AMQP_PORT'
+'BP_AMQP_VHOST'
+'BP_AMQP_USER'
+'BP_AMQP_PASS'
+'BP_AMQP_SSL'
+'BP_ROUTING_KEY'
 ```
 
 ## How to Use
@@ -23,7 +23,7 @@ bundle installed
 
 
 `commands`
-```  
+```
 ruby bin/bulk_publisher.rb start
 ```
 
