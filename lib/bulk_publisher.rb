@@ -6,7 +6,7 @@ module BulkPublisher
     "pass",
     "ssl",
     "vhost",
-    "routing_key"
+    "queue"
   ]
   ENVIRONMENT = {
     "host" =>        'BP_AMQP_HOST',
@@ -15,7 +15,7 @@ module BulkPublisher
     "user" =>        'BP_AMQP_USER',
     "pass" =>        'BP_AMQP_PASS',
     "ssl" =>         'BP_AMQP_SSL',
-    "routing_key" => 'BP_ROUTING_KEY'
+    "queue" =>       'BP_AMQP_QUEUE'
   }
   require "bulk_publisher/daemon"
   require "bulk_publisher/runner"

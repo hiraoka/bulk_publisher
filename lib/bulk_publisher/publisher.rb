@@ -22,7 +22,7 @@ class BulkPublisher::Publisher
   def initialize( options )
     @message_count = options["message_count"]
     @options = options
-    @routing_key = options["routing_key"]
+    @queue = options["queue"]
   end
 
   def conn
@@ -35,7 +35,7 @@ class BulkPublisher::Publisher
     conn.start
 
     ch = conn.create_channel
-    q  = ch.queue(@routing_key)
+    q  = ch.queue(@queue)
 
     #runメソッドが呼ばれるのを待つ
     until ready?
@@ -54,7 +54,7 @@ class BulkPublisher::Publisher
       if stop?
         break
       end
-      q.publish({"body"=>{"greeting"=>"yo"}, "routing_key"=>@routing_key}.to_json )
+      q.publish({"body"=>{"greeting"=>"yo"}, "routing_key"=>"bulk_publisher_test"}.to_json )
     end
     conn.stop
     @running_time = Time.now - begin_at

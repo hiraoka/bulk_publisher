@@ -12,7 +12,7 @@ amqpに任意の数のメッセージをpublishするツール。
 'BP_AMQP_USER'
 'BP_AMQP_PASS'
 'BP_AMQP_SSL'
-'BP_ROUTING_KEY'
+'BP_AMQP_QUEUE'
 ```
 
 ## How to Use
