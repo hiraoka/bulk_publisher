@@ -1,20 +1,19 @@
 class BulkPublisher::Thread
-  def initialize( thread_count = 0 )
-    @thread_count = thread_count
+  def initialize( connection_count = 0 )
+    @connection_count = connection_count
   end
 
-  def create_thread( run_clazz: nil )
+  def create_thread_and_run( run_clazz: nil )
     @threads = []
-    @thread_count.times do |i|
+    @connection_count.times do |i|
       @threads << Thread.new do
-        begin
-          Thread.pass
-          yield
-        rescue => e
-          puts "ERROR: raise exception. #{e.inspect}"
-        end
+        Thread.pass
+        yield
       end
+      percent = ( i + 1 ) * 100 / @connection_count
+      printf("\rconnect %d/ %d ( %d percent )", i + 1, @connection_count, percent )
     end
+    printf "\n"
     run_clazz.run if run_clazz
     @threads.each { |t|
       t.join

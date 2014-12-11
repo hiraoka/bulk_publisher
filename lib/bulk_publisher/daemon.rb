@@ -15,12 +15,14 @@ class BulkPublisher::Daemon
     Process.daemon if @options["daemonize"]
     BulkPublisher::Pid.create
 
-    @thread = BulkPublisher::Thread.new( @options["thread_count"] )
-    @thread.create_thread( run_clazz: BulkPublisher::Publisher ) do
+    @thread = BulkPublisher::Thread.new( @options["connection_count"] )
+    @thread.create_thread_and_run( run_clazz: BulkPublisher::Publisher ) do
       publisher = BulkPublisher::Publisher.new( @options )
       publisher.reserve
-      puts "running time: #{publisher.running_time}."
+      puts "running time: #{publisher.running_time}." unless publisher.running_time.nil?
     end
+    puts "published message count #{BulkPublisher::Publisher.published_count}."
+    puts "error count #{BulkPublisher::Publisher.error_count}."
 
     stop
   end
