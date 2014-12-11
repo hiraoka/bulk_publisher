@@ -1,4 +1,4 @@
-class BulkPublisher::Thread
+class UsaziUtil::Thread
   def initialize( connection_count = 0 )
     @connection_count = connection_count
   end

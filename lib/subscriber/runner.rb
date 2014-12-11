@@ -1,11 +1,11 @@
-require "bulk_publisher/version"
+require "subscriber/version"
 require "usazi_util/runner"
 
-class BulkPublisher::Runner < Thor
+class Subscriber::Runner < Thor
   include UsaziUtil::Runner
-  $0 = "BulkPublisher - #{::BulkPublisher::Version::STRING}"
+  $0 = "Subscriber - #{::Subscriber::Version::STRING}"
 
-  desc "start", "Run the bulk_publisher"
+  desc "start", "Run the subscriber"
   option :message_count,                  type: :numeric, aliases: '-m', desc: "message count that number of per thread"
   option :connection_count,   default: 5, type: :numeric, aliases: '-c', desc: "connection count"
   option :pid_file,                       type: :string,  aliases: '-P', desc: "pid file name."
@@ -15,8 +15,6 @@ class BulkPublisher::Runner < Thor
 
 private
   def class_name
-    "bulk_publisher"
+    "subscriber"
   end
 end
-
-
