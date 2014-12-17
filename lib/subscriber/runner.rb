@@ -7,7 +7,7 @@ class Subscriber::Runner < Thor
 
   desc "start", "Run the subscriber"
   option :message_count,                  type: :numeric, aliases: '-m', desc: "message count that number of per thread"
-  option :connection_count,   default: 5, type: :numeric, aliases: '-c', desc: "connection count"
+  option :connection_count,   default: 1, type: :numeric, aliases: '-c', desc: "connection count"
   option :pid_file,                       type: :string,  aliases: '-P', desc: "pid file name."
   def start
     super()
